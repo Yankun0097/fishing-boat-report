@@ -51,4 +51,152 @@ body {
 #content {
   flex: 1;
   padding: 30px;
-  overflow
+  overflow-y: auto;
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 26px;
+}
+
+h2 {
+  color: #3b6ef3;
+  font-size: 22px;
+  border-bottom: 2px solid #dce3f7;
+  padding-bottom: 5px;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+/* 頁碼區 */
+#footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid #d0d7e4;
+}
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+}
+
+.btn-prev {
+  background: #d0d7e4;
+}
+
+.btn-next {
+  background: #3b6ef3;
+  color: #fff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 左側目錄 -->
+<div id="sidebar">
+  <h2>目錄</h2>
+
+  <div class="nav-item active" data-target="sec1">
+    113–114 年娛樂漁船安全抽檢報告
+  </div>
+
+  <div class="nav-item" data-target="sec2">
+    抽查概況
+  </div>
+
+  <div class="nav-sub">
+    <div class="nav-item" data-target="sec21" style="margin-left:18px;">2-1. 北部航務中心</div>
+    <div class="nav-item" data-target="sec22" style="margin-left:18px;">2-2. 中部航務中心</div>
+    <div class="nav-item" data-target="sec23" style="margin-left:18px;">2-3. 東部航務中心</div>
+    <div class="nav-item" data-target="sec24" style="margin-left:18px;">2-4. 南部航務中心</div>
+  </div>
+
+  <div class="nav-item" data-target="sec3">
+    違規類型分析
+  </div>
+
+  <div class="nav-item" data-target="sec4">
+    結論與建議
+  </div>
+</div>
+
+<!-- 右側內容區 -->
+<div id="content">
+
+  <div id="sec1" class="section active">
+    <h1>113–114 年娛樂漁船安全抽檢報告</h1>
+    <p>（在此貼上封面摘要內容）</p>
+  </div>
+
+  <div id="sec2" class="section">
+    <h1>抽查概況</h1>
+    <p>（本章摘要）</p>
+  </div>
+
+  <div id="sec21" class="section">
+    <h1>2-1. 北部航務中心</h1>
+    <p>（北部資料內容）</p>
+  </div>
+
+  <div id="sec22" class="section">
+    <h1>2-2. 中部航務中心</h1>
+    <p>（中部資料內容）</p>
+  </div>
+
+  <div id="sec23" class="section">
+    <h1>2-3. 東部航務中心</h1>
+    <p>（東部資料內容）</p>
+  </div>
+
+  <div id="sec24" class="section">
+    <h1>2-4. 南部航務中心</h1>
+    <p>（南部資料內容）</p>
+  </div>
+
+  <div id="sec3" class="section">
+    <h1>違規類型分析</h1>
+    <p>（統計資料內容）</p>
+  </div>
+
+  <div id="sec4" class="section">
+    <h1>結論與建議</h1>
+    <p>（結語與建議）</p>
+  </div>
+
+</div>
+
+<script>
+// 點左側目錄切換右側內容
+const navItems = document.querySelectorAll(".nav-item");
+const sections = document.querySelectorAll(".section");
+
+navItems.forEach(item => {
+  item.addEventListener("click", () => {
+    // 左側選單高亮
+    navItems.forEach(i => i.classList.remove("active"));
+    item.classList.add("active");
+
+    // 切換右側內容
+    const target = item.getAttribute("data-target");
+    sections.forEach(sec => {
+      sec.classList.remove("active");
+      if (sec.id === target) sec.classList.add("active");
+    });
+  });
+});
+</script>
+
+</body>
+</html>
